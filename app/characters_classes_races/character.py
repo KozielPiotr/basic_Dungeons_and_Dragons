@@ -40,3 +40,8 @@ class Character:
     bloodied = count_bloodied(current_hp)
     surge_value = current_hp / 4
     surges_per_day = 0
+
+    @classmethod
+    def create_character(cls):
+        new_character = cls()
+        return new_character
