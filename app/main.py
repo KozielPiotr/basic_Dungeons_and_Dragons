@@ -1,6 +1,6 @@
 """Main file. Run to start program."""
 
-from menu.screens import Screens
+from menu.triggers import Trigger
 
-menu = Screens()
-menu.main_screen()
+menu = Trigger()
+menu.main_menu_trigger()
