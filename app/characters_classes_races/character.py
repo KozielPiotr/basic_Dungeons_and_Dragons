@@ -7,6 +7,7 @@ class Character:
     name = ""
     initiative = 0
     speed = 0
+    size = None
 
     #  ability scores
     base_strength = 0
@@ -25,6 +26,7 @@ class Character:
     #  senses
     basic_insight = 10
     passive_perception = 10
+    vision = None
 
     #  hit points
     @staticmethod
