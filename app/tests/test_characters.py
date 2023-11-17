@@ -1,6 +1,7 @@
 """Tests for Character class"""
 
 from app.characters_classes_races.character import Character
+from app.characters_classes_races.races import DragonbornRace, TieflingRace
 
 
 class TestCharacterAbilityScores:
@@ -55,3 +56,20 @@ class TestCharacterAbilityScores:
         """
         self.character.wisdom_race_bonus = self.bonus
         assert self.character.get_wisdom() == self.bonus
+
+    class TestCharacterRace:
+        """Setting race should assign race to the character and change character's race bonus abilities"""
+
+        def setup_method(self):
+            self.character = Character()
+            self.bonus = 2
+
+        def test_set_race_changes_character_race(self):
+            race = TieflingRace
+            self.character.set_race(race)
+            assert self.character.race == race
+
+        def test_set_race_changes_character_race_bonus_abilities(self):
+            race = DragonbornRace
+            self.character.set_race(race)
+            assert self.character.strength_race_bonus == race().strength_race_bonus

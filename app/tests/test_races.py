@@ -1,4 +1,4 @@
-"""Tests for Race class"""
+"""Tests for RaceName class"""
 
 from app.characters_classes_races.character import Character
 from app.characters_classes_races.races import HumanRace

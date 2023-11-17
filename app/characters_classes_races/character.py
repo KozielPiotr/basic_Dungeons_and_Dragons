@@ -5,6 +5,7 @@ class Character:
     """Data from character card"""
 
     name = ""
+    race = None
     initiative = 0
     speed = 0
     size = None
@@ -50,6 +51,11 @@ class Character:
     intelligence_race_bonus = 0
     wisdom_race_bonus = 0
     charisma_race_bonus = 0
+
+    def set_race(self, race):
+        race = race
+        race().modify_character(self)
+        self.race = race
 
     def get_strength(self):
         """Overall strength"""
