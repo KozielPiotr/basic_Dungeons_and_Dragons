@@ -1,6 +1,6 @@
 """Main file. Run to start program."""
 
-from menu.main_manu import MainMenu
+from menu.screens import Screens
 
-menu = MainMenu()
-menu.print_menu()
+menu = Screens()
+menu.main_screen()
