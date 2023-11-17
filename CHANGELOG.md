@@ -5,3 +5,4 @@
 * main function to start creating character
 * user can give a name to character
 * add more character and race attributes: size, speed, vision
+* setting character's race

@@ -14,3 +14,9 @@ class Vision(Enum):
     normal_vision = "normal vision"
     low_light_vision = "low-light vision"
     darkvision = "darkvision"
+
+
+class RaceName(Enum):
+    human = "human"
+    tiefling = "tiefling"
+    dragonborn = "dragonborn"

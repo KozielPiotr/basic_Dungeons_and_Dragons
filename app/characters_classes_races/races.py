@@ -1,7 +1,7 @@
 """Classes for available character classes and races"""
 
 from .character import Character
-from .enums import Size, Vision
+from .enums import RaceName, Size, Vision
 
 
 class BaseRace:
@@ -40,7 +40,7 @@ class HumanRace(BaseRace):
 
     def __init__(self):
         super().__init__()
-        self.name = "human"
+        self.name = RaceName.human
 
         self.strength_race_bonus = 2
         self.condition_race_bonus = 2
@@ -62,7 +62,7 @@ class TieflingRace(BaseRace):
 
     def __init__(self):
         super().__init__()
-        self.name = "tiefling"
+        self.name = RaceName.tiefling
 
         self.intelligence_race_bonus = 2
         self.charisma_race_bonus = 2
@@ -72,7 +72,7 @@ class TieflingRace(BaseRace):
         self.vision = Vision.low_light_vision
 
 
-class DragonornRace(BaseRace):
+class DragonbornRace(BaseRace):
     """
     Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with
     fearful incomprehension
@@ -80,7 +80,7 @@ class DragonornRace(BaseRace):
 
     def __init__(self):
         super().__init__()
-        self.name = "dragonborn"
+        self.name = RaceName.dragonborn
 
         self.strength_race_bonus = 2
         self.charisma_race_bonus = 2
@@ -88,3 +88,10 @@ class DragonornRace(BaseRace):
         self.size = Size.medium
         self.speed = 6
         self.vision = Vision.normal_vision
+
+
+RACES = {
+    RaceName.human.value: HumanRace,
+    RaceName.tiefling.value: TieflingRace,
+    RaceName.dragonborn.value: DragonbornRace,
+}

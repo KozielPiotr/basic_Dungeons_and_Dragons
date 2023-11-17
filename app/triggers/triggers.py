@@ -27,7 +27,8 @@ class Trigger:
         choice = self.screen.main_screen(Screen.create_character_screen, character)
         match choice:
             case "1":
-                pass
+                self.screen.main_screen(Screen.set_race_screen, character)
+                self.create_character_trigger(character)
             case "2":
                 pass
             case "3":
