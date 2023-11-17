@@ -22,12 +22,12 @@ class HumanRace(AbstractRace):
 
     @staticmethod
     def modify_abilities(character: Character) -> Character:
-        character.strength += 2
-        character.condition += 2
-        character.dexterity += 2
-        character.intelligence += 2
-        character.wisdom += 2
-        character.charisma += 2
+        character.strength_race_bonus = 2
+        character.condition_race_bonus = 2
+        character.dexterity_race_bonus = 2
+        character.intelligence_race_bonus = 2
+        character.wisdom_race_bonus = 2
+        character.charisma_race_bonus = 2
         return character
 
 
@@ -41,8 +41,8 @@ class TieflingRace(AbstractRace):
 
     @staticmethod
     def modify_abilities(character: Character) -> Character:
-        character.intelligence += 2
-        character.charisma += 2
+        character.intelligence_race_bonus = 2
+        character.charisma_race_bonus = 2
         return character
 
 
@@ -56,6 +56,6 @@ class DragonornRace(AbstractRace):
 
     @staticmethod
     def modify_abilities(character: Character) -> Character:
-        character.strength += 2
-        character.charisma += 2
+        character.strength_race_bonus = 2
+        character.charisma_race_bonus = 2
         return character
