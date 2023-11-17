@@ -24,14 +24,16 @@ class Trigger:
                 self.main_menu_trigger()
 
     def create_character_trigger(self, character: Character):
-        choice = self.screen.main_screen(Screen.create_character_screen)
+        choice = self.screen.main_screen(Screen.create_character_screen, character)
         match choice:
             case "1":
                 pass
             case "2":
                 pass
             case "3":
-                character.name = self.screen.main_screen(Screen.character_name_screen)
+                character = self.screen.main_screen(
+                    Screen.character_name_screen, character
+                )
                 self.create_character_trigger(character)
             case "4":
                 self.main_menu_trigger()

@@ -7,7 +7,7 @@ class Screen:
     """Creates visual menu"""
 
     @staticmethod
-    def main_menu_screen():
+    def main_menu_screen(character=None):
         print("\n")
         print("Choose:")
         print("1. New character")
@@ -17,21 +17,21 @@ class Screen:
         return input()
 
     @staticmethod
-    def create_character_screen():
+    def create_character_screen(character):
         print("1. Race")
         print("2. Class")
-        print("3. Name")
+        print(f"3. Name    {character.name if character else ''}")
         print("4. Back")
 
         return input()
 
     @staticmethod
-    def character_name_screen():
-        name = input("enter character name: ")
-        return name
+    def character_name_screen(character):
+        character.name = input("enter character name: ")
+        return character
 
-    def main_screen(self, screen=None):
+    def main_screen(self, screen=None, character=None):
         os.system("clear")
         screen = screen if screen else self.main_menu_screen
         print("DUNGEONS AND DRAGONS CHARACTER EDITOR\n")
-        return screen()
+        return screen(character)
