@@ -11,9 +11,9 @@ class TestRaces:
         character = Character()
         race = HumanRace()
         character = race.modify_abilities(character)
-        assert character.strength == 2
-        assert character.condition == 2
-        assert character.dexterity == 2
-        assert character.intelligence == 2
-        assert character.wisdom == 2
-        assert character.charisma == 2
+        assert character.strength_race_bonus == 2
+        assert character.condition_race_bonus == 2
+        assert character.dexterity_race_bonus == 2
+        assert character.intelligence_race_bonus == 2
+        assert character.wisdom_race_bonus == 2
+        assert character.charisma_race_bonus == 2

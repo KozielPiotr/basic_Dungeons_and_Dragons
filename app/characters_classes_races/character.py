@@ -9,12 +9,12 @@ class Character:
     speed = 0
 
     #  ability scores
-    strength = 0
-    condition = 0
-    dexterity = 0
-    intelligence = 0
-    wisdom = 0
-    charisma = 0
+    base_strength = 0
+    base_condition = 0
+    base_dexterity = 0
+    base_intelligence = 0
+    base_wisdom = 0
+    base_charisma = 0
 
     #  defenses
     armor_class = 0
@@ -40,6 +40,38 @@ class Character:
     bloodied = count_bloodied(current_hp)
     surge_value = current_hp / 4
     surges_per_day = 0
+
+    #  race ability scores bonuses
+    strength_race_bonus = 0
+    condition_race_bonus = 0
+    dexterity_race_bonus = 0
+    intelligence_race_bonus = 0
+    wisdom_race_bonus = 0
+    charisma_race_bonus = 0
+
+    def get_strength(self):
+        """Overall strength"""
+        return self.base_strength + self.strength_race_bonus
+
+    def get_condition(self):
+        """Overall condition"""
+        return self.base_condition + self.condition_race_bonus
+
+    def get_dexterity(self):
+        """Overall dexterity"""
+        return self.base_dexterity + self.dexterity_race_bonus
+
+    def get_intelligence(self):
+        """Overall intelligence"""
+        return self.base_intelligence + self.intelligence_race_bonus
+
+    def get_wisdom(self):
+        """Overall wisdom"""
+        return self.base_wisdom + self.wisdom_race_bonus
+
+    def get_charisma(self):
+        """Overall charisma"""
+        return self.base_charisma + self.charisma_race_bonus
 
     @classmethod
     def create_character(cls):
