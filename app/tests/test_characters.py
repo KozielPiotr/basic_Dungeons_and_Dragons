@@ -68,6 +68,21 @@ class TestCharacterAbilityScores:
         assert self.character.get_wisdom() == race.charisma_race_bonus
 
 
+class TestHealthPoints:
+    """Tests methods to count HP"""
+
+    def setup_method(self):
+        self.character = Character()
+
+    def test_bloodied(self):
+        self.character.current_hp = 25
+        assert self.character.bloodied() == 12
+
+    def test_surge(self):
+        self.character.current_hp = 50
+        assert self.character.surge() == 12
+
+
 class TestCharacterRace:
     """Setting race should assign race to the character and change character's race bonus abilities"""
 
