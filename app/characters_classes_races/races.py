@@ -1,6 +1,5 @@
 """Classes for available character classes and races"""
 
-from .character import Character
 from .enums import RaceName, Size, Vision
 
 
@@ -19,20 +18,6 @@ class BaseRace:
     size = None
     speed = 0
     vision = None
-
-    @classmethod
-    def modify_character(cls, character: Character) -> Character:
-        character.strength_race_bonus = cls.strength_race_bonus
-        character.condition_race_bonus = cls.condition_race_bonus
-        character.dexterity_race_bonus = cls.dexterity_race_bonus
-        character.intelligence_race_bonus = cls.intelligence_race_bonus
-        character.wisdom_race_bonus = cls.wisdom_race_bonus
-        character.charisma_race_bonus = cls.charisma_race_bonus
-
-        character.size = cls.size
-        character.speed = cls.speed
-        character.vision = cls.vision
-        return character
 
 
 class HumanRace(BaseRace):
@@ -83,3 +68,5 @@ RACES = {
     RaceName.tiefling.value: TieflingRace,
     RaceName.dragonborn.value: DragonbornRace,
 }
+
+RaceType = [v for v in RACES.values()]
