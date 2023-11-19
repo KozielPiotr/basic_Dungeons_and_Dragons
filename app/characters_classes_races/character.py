@@ -1,35 +1,54 @@
 """Character card"""
 
+from typing_extensions import Self
+
+from .races import RaceType
+
 
 class Character:
     """Data from character card"""
 
-    name = ""
-    race = None
-    initiative = 0
-    speed = 0
-    size = None
+    def __init__(self):
+        self.name = ""
+        self.race = None
+        self.initiative = 0
+        self.speed = 0
+        self.size = None
 
-    #  ability scores
-    base_strength = 0
-    base_condition = 0
-    base_dexterity = 0
-    base_intelligence = 0
-    base_wisdom = 0
-    base_charisma = 0
+        #  ability scores
+        self.base_strength = 0
+        self.base_condition = 0
+        self.base_dexterity = 0
+        self.base_intelligence = 0
+        self.base_wisdom = 0
+        self.base_charisma = 0
 
-    #  defenses
-    armor_class = 0
-    fortitude = 0
-    reflex = 0
-    will = 0
+        #  defenses
+        self.armor_class = 0
+        self.fortitude = 0
+        self.reflex = 0
+        self.will = 0
 
-    #  senses
-    basic_insight = 10
-    passive_perception = 10
-    vision = None
+        #  senses
+        self.basic_insight = 10
+        self.passive_perception = 10
+        self.vision = None
+        self.max_hp = 0
 
-    #  hit points
+        #  hp and healing
+        current_hp = 0
+        self.bloodied = self.count_bloodied(current_hp)
+        self.surge_value = current_hp / 4
+        self.surges_per_day = 0
+
+        #  race ability scores bonuses
+        self.strength_race_bonus = 0
+        self.condition_race_bonus = 0
+        self.dexterity_race_bonus = 0
+        self.intelligence_race_bonus = 0
+        self.wisdom_race_bonus = 0
+        self.charisma_race_bonus = 0
+
     @staticmethod
     def count_bloodied(current_hp):
         return current_hp / 2
@@ -38,24 +57,22 @@ class Character:
     def count_surge_value(current_hp):
         return current_hp / 4
 
-    max_hp = 0
-    current_hp = 0
-    bloodied = count_bloodied(current_hp)
-    surge_value = current_hp / 4
-    surges_per_day = 0
+    def modify_character(self, race: RaceType) -> Self:
+        self.strength_race_bonus = race.strength_race_bonus
+        self.condition_race_bonus = race.condition_race_bonus
+        self.dexterity_race_bonus = race.dexterity_race_bonus
+        self.intelligence_race_bonus = race.intelligence_race_bonus
+        self.wisdom_race_bonus = race.wisdom_race_bonus
+        self.charisma_race_bonus = race.charisma_race_bonus
 
-    #  race ability scores bonuses
-    strength_race_bonus = 0
-    condition_race_bonus = 0
-    dexterity_race_bonus = 0
-    intelligence_race_bonus = 0
-    wisdom_race_bonus = 0
-    charisma_race_bonus = 0
+        self.size = race.size
+        self.speed = race.speed
+        self.vision = race.vision
+        return self
 
     def set_race(self, race):
-        race = race
-        race.modify_character(self)
-        self.race = race
+        character = self.modify_character(race)
+        character.race = race
 
     def get_strength(self):
         """Overall strength"""

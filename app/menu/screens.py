@@ -20,7 +20,7 @@ class Screen:
     @staticmethod
     def create_character_screen(character):
         print(
-            f"1. Race    {character.race().name.value.center(10) if (character and character.race) else ''}"
+            f"1. Race    {character.race.name.value.center(10) if (character and character.race) else ''}"
         )
         print("2. Class")
         print(f"3. Name    {character.name.center(10) if character else ''}")
