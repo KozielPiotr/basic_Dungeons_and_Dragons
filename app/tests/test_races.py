@@ -10,7 +10,7 @@ class TestRaces:
 
     def test_modify_character__abilities(self):
         """Character abilities are set to 0 by default"""
-        race = HumanRace()
+        race = HumanRace
         character = race.modify_character(self.character)
         assert character.strength_race_bonus == race.strength_race_bonus
         assert character.condition_race_bonus == race.condition_race_bonus
@@ -21,7 +21,7 @@ class TestRaces:
 
     def test_modify_character__secondary(self):
         """Checks if attributes like size are set properly"""
-        race = HumanRace()
+        race = HumanRace
         character = race.modify_character(self.character)
         assert character.size == race.size
         assert character.speed == race.speed

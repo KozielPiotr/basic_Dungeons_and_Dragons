@@ -54,7 +54,7 @@ class Character:
 
     def set_race(self, race):
         race = race
-        race().modify_character(self)
+        race.modify_character(self)
         self.race = race
 
     def get_strength(self):
