@@ -5,53 +5,49 @@ from .enums import RaceName, Size, Vision
 
 
 class BaseRace:
-    def __init__(self):
-        self.name = ""
+    """Base class for all races"""
 
-        #  abilities bonuses
-        self.strength_race_bonus = 0
-        self.condition_race_bonus = 0
-        self.dexterity_race_bonus = 0
-        self.intelligence_race_bonus = 0
-        self.wisdom_race_bonus = 0
-        self.charisma_race_bonus = 0
+    #  abilities bonuses
+    strength_race_bonus = 0
+    condition_race_bonus = 0
+    dexterity_race_bonus = 0
+    intelligence_race_bonus = 0
+    wisdom_race_bonus = 0
+    charisma_race_bonus = 0
 
-        #  secondary attributes
-        self.size = None
-        self.speed = 0
-        self.vision = None
+    #  scondary attributes
+    size = None
+    speed = 0
+    vision = None
 
-    def modify_character(self, character: Character) -> Character:
-        character.strength_race_bonus = self.strength_race_bonus
-        character.condition_race_bonus = self.condition_race_bonus
-        character.dexterity_race_bonus = self.dexterity_race_bonus
-        character.intelligence_race_bonus = self.intelligence_race_bonus
-        character.wisdom_race_bonus = self.wisdom_race_bonus
-        character.charisma_race_bonus = self.charisma_race_bonus
+    @classmethod
+    def modify_character(cls, character: Character) -> Character:
+        character.strength_race_bonus = cls.strength_race_bonus
+        character.condition_race_bonus = cls.condition_race_bonus
+        character.dexterity_race_bonus = cls.dexterity_race_bonus
+        character.intelligence_race_bonus = cls.intelligence_race_bonus
+        character.wisdom_race_bonus = cls.wisdom_race_bonus
+        character.charisma_race_bonus = cls.charisma_race_bonus
 
-        character.size = self.size
-        character.speed = self.speed
-        character.vision = self.vision
+        character.size = cls.size
+        character.speed = cls.speed
+        character.vision = cls.vision
         return character
 
 
 class HumanRace(BaseRace):
     """Humans tend toward no particular alignment. The best and the worst are found among them"""
 
-    def __init__(self):
-        super().__init__()
-        self.name = RaceName.human
-
-        self.strength_race_bonus = 2
-        self.condition_race_bonus = 2
-        self.dexterity_race_bonus = 2
-        self.intelligence_race_bonus = 2
-        self.wisdom_race_bonus = 2
-        self.charisma_race_bonus = 2
-
-        self.size = Size.medium
-        self.speed = 6
-        self.vision = Vision.normal_vision
+    name = RaceName.human
+    strength_race_bonus = 2
+    condition_race_bonus = 2
+    dexterity_race_bonus = 2
+    intelligence_race_bonus = 2
+    wisdom_race_bonus = 2
+    charisma_race_bonus = 2
+    size = Size.medium
+    speed = 6
+    vision = Vision.normal_vision
 
 
 class TieflingRace(BaseRace):
@@ -60,16 +56,12 @@ class TieflingRace(BaseRace):
     to see mistrust and fear in every eye: this is the lot of the tiefling
     """
 
-    def __init__(self):
-        super().__init__()
-        self.name = RaceName.tiefling
-
-        self.intelligence_race_bonus = 2
-        self.charisma_race_bonus = 2
-
-        self.size = Size.medium
-        self.speed = 6
-        self.vision = Vision.low_light_vision
+    name = RaceName.tiefling
+    intelligence_race_bonus = 2
+    charisma_race_bonus = 2
+    size = Size.medium
+    speed = 6
+    vision = Vision.low_light_vision
 
 
 class DragonbornRace(BaseRace):
@@ -78,16 +70,12 @@ class DragonbornRace(BaseRace):
     fearful incomprehension
     """
 
-    def __init__(self):
-        super().__init__()
-        self.name = RaceName.dragonborn
-
-        self.strength_race_bonus = 2
-        self.charisma_race_bonus = 2
-
-        self.size = Size.medium
-        self.speed = 6
-        self.vision = Vision.normal_vision
+    name = RaceName.dragonborn
+    strength_race_bonus = 2
+    charisma_race_bonus = 2
+    size = Size.medium
+    speed = 6
+    vision = Vision.normal_vision
 
 
 RACES = {
