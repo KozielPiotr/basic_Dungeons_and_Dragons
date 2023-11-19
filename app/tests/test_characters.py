@@ -64,8 +64,39 @@ class TestCharacterAbilityScores:
         Character base abilities are set to 0 by default.
         Checks correctness of charisma counting.
         """
-        self.character.wisdom_race_bonus = race.charisma_race_bonus
-        assert self.character.get_wisdom() == race.charisma_race_bonus
+        self.character.charisma_race_bonus = race.charisma_race_bonus
+        assert self.character.get_charisma() == race.charisma_race_bonus
+
+
+class TestDefences:
+    """Character base defences are set to 0 by default."""
+
+    def setup_method(self):
+        self.character = Character()
+
+    @pytest.mark.parametrize("race", RACES)
+    def test_get_armor_class(self, race):
+        """Checks correctness of armor class counting."""
+        self.character.race_armor_class_bonus = race.armor_class
+        assert self.character.get_armor_class() == race.armor_class
+
+    @pytest.mark.parametrize("race", RACES)
+    def test_get_fortitude(self, race):
+        """Checks correctness of fortitude counting."""
+        self.character.race_fortitude_bonus = race.fortitude
+        assert self.character.get_fortitude() == race.fortitude
+
+    @pytest.mark.parametrize("race", RACES)
+    def test_get_reflex(self, race):
+        """Checks correctness of reflex counting."""
+        self.character.race_reflex_bonus = race.reflex
+        assert self.character.get_reflex() == race.reflex
+
+    @pytest.mark.parametrize("race", RACES)
+    def test_get_will(self, race):
+        """Checks correctness of will counting."""
+        self.character.race_will_bonus = race.will
+        assert self.character.get_will() == race.will
 
 
 class TestHealthPoints:
@@ -147,3 +178,12 @@ class TestModifyCharacter:
         assert character.size == race.size
         assert character.speed == race.speed
         assert character.vision == race.vision
+
+    @pytest.mark.parametrize("race", RACES)
+    def test_modify_character__defences(self, race):
+        """Checks if defences are set properly"""
+        character = self.character.modify_character(race)
+        assert character.race_armor_class_bonus == race.armor_class
+        assert character.race_fortitude_bonus == race.fortitude
+        assert character.race_reflex_bonus == race.reflex
+        assert character.race_will_bonus == race.will
