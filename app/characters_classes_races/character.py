@@ -1,5 +1,7 @@
 """Character card"""
 
+import math
+
 from typing_extensions import Self
 
 from .races import RaceType
@@ -8,56 +10,46 @@ from .races import RaceType
 class Character:
     """Data from character card"""
 
-    def __init__(self):
-        self.name = ""
-        self.race = None
-        self.initiative = 0
-        self.speed = 0
-        self.size = None
+    name = ""
+    race = None
+    initiative = 0
+    speed = 0
+    size = None
+    #  ability scores
+    base_strength = 0
+    base_condition = 0
+    base_dexterity = 0
+    base_intelligence = 0
+    base_wisdom = 0
+    base_charisma = 0
+    #  defenses
+    armor_class = 0
+    fortitude = 0
+    reflex = 0
+    will = 0
+    #  senses
+    basic_insight = 10
+    passive_perception = 10
+    vision = None
+    max_hp = 0
+    #  hp and healing
+    current_hp = 0
+    surges_per_day = 0
+    #  race ability scores bonuses
+    strength_race_bonus = 0
+    condition_race_bonus = 0
+    dexterity_race_bonus = 0
+    intelligence_race_bonus = 0
+    wisdom_race_bonus = 0
+    charisma_race_bonus = 0
 
-        #  ability scores
-        self.base_strength = 0
-        self.base_condition = 0
-        self.base_dexterity = 0
-        self.base_intelligence = 0
-        self.base_wisdom = 0
-        self.base_charisma = 0
-
-        #  defenses
-        self.armor_class = 0
-        self.fortitude = 0
-        self.reflex = 0
-        self.will = 0
-
-        #  senses
-        self.basic_insight = 10
-        self.passive_perception = 10
-        self.vision = None
-        self.max_hp = 0
-
-        #  hp and healing
-        current_hp = 0
-        self.bloodied = self.count_bloodied(current_hp)
-        self.surge_value = current_hp / 4
-        self.surges_per_day = 0
-
-        #  race ability scores bonuses
-        self.strength_race_bonus = 0
-        self.condition_race_bonus = 0
-        self.dexterity_race_bonus = 0
-        self.intelligence_race_bonus = 0
-        self.wisdom_race_bonus = 0
-        self.charisma_race_bonus = 0
-
-    @staticmethod
-    def count_bloodied(current_hp: int) -> int:
+    def bloodied(self) -> int:
         """Returns amount of HP, when character is bloodied"""
-        return current_hp / 2
+        return math.floor(self.current_hp / 2)
 
-    @staticmethod
-    def count_surge_value(current_hp: int) -> int:
+    def surge(self) -> int:
         """Returns value of surge"""
-        return current_hp / 4
+        return math.floor(self.current_hp / 4)
 
     def modify_character(self, race: RaceType) -> Self:
         """Sets character's bonuses from race"""
