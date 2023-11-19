@@ -1,4 +1,5 @@
-"""Mechanisms to choose options from menues"""
+# pylint: disable=import-error
+"""Mechanisms to choose options from menus"""
 
 from characters_classes_races.character import Character
 from menu.screens import Screen
@@ -7,10 +8,10 @@ from menu.screens import Screen
 class Trigger:
     """Allows choosing option from the menu"""
 
-    def __init__(self):
-        self.screen = Screen()
+    screen = Screen()
 
     def main_menu_trigger(self):
+        """Match for main menu options"""
         choice = self.screen.main_screen(Screen.main_menu_screen)
         match choice:
             case "1":
@@ -24,6 +25,7 @@ class Trigger:
                 self.main_menu_trigger()
 
     def create_character_trigger(self, character: Character):
+        """Match for create character options"""
         choice = self.screen.main_screen(Screen.create_character_screen, character)
         match choice:
             case "1":

@@ -19,6 +19,9 @@ jobs:
       - name: Black
         if: always()
         run: black --check ./
+      - name: Pylint
+        if: always()
+        run: pylint app --fail-under=9.0
       - name: Pytest
         if: always()
         run: pytest

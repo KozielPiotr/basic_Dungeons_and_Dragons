@@ -1,22 +1,28 @@
-"""Enums with values for some of attributes"""
+"""Enums with values for some of the attributes"""
 
 from enum import Enum
 
 
 class Size(Enum):
-    medium = "medium"
-    large = "large"
-    huge = "huge"
-    gargantuan = "gargantuan"
+    """Size of a race"""
+
+    MEDIUM = "medium"
+    LARGE = "large"
+    HUGE = "huge"
+    GARGANTUAN = "gargantuan"
 
 
 class Vision(Enum):
-    normal_vision = "normal vision"
-    low_light_vision = "low-light vision"
-    darkvision = "darkvision"
+    """Kinds of vision. Used with every single race"""
+
+    NORMAL_VISION = "normal vision"
+    LOW_LIGHT_VISION = "low-light vision"
+    DARKVISION = "darkvision"
 
 
 class RaceName(Enum):
-    human = "human"
-    tiefling = "tiefling"
-    dragonborn = "dragonborn"
+    """All implemented races names"""
+
+    HUMAN = "Human"
+    TIEFLING = "Tiefling"
+    DRAGONBORN = "Dragonborn"

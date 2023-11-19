@@ -1,3 +1,4 @@
+# pylint: disable=too-few-public-methods
 """Classes for available character classes and races"""
 
 from .enums import RaceName, Size, Vision
@@ -14,7 +15,7 @@ class BaseRace:
     wisdom_race_bonus = 0
     charisma_race_bonus = 0
 
-    #  scondary attributes
+    #  secondary attributes
     size = None
     speed = 0
     vision = None
@@ -23,16 +24,16 @@ class BaseRace:
 class HumanRace(BaseRace):
     """Humans tend toward no particular alignment. The best and the worst are found among them"""
 
-    name = RaceName.human
+    name = RaceName.HUMAN
     strength_race_bonus = 2
     condition_race_bonus = 2
     dexterity_race_bonus = 2
     intelligence_race_bonus = 2
     wisdom_race_bonus = 2
     charisma_race_bonus = 2
-    size = Size.medium
+    size = Size.MEDIUM
     speed = 6
-    vision = Vision.normal_vision
+    vision = Vision.NORMAL_VISION
 
 
 class TieflingRace(BaseRace):
@@ -41,32 +42,32 @@ class TieflingRace(BaseRace):
     to see mistrust and fear in every eye: this is the lot of the tiefling
     """
 
-    name = RaceName.tiefling
+    name = RaceName.TIEFLING
     intelligence_race_bonus = 2
     charisma_race_bonus = 2
-    size = Size.medium
+    size = Size.MEDIUM
     speed = 6
-    vision = Vision.low_light_vision
+    vision = Vision.LOW_LIGHT_VISION
 
 
 class DragonbornRace(BaseRace):
     """
-    Born of dragons, as their name proclaims, the dragonborn walk proudly through a world that greets them with
+    Born of dragons, as their name proclaims, the Dragonborn walk proudly through a world that greets them with
     fearful incomprehension
     """
 
-    name = RaceName.dragonborn
+    name = RaceName.DRAGONBORN
     strength_race_bonus = 2
     charisma_race_bonus = 2
-    size = Size.medium
+    size = Size.MEDIUM
     speed = 6
-    vision = Vision.normal_vision
+    vision = Vision.NORMAL_VISION
 
 
 RACES = {
-    RaceName.human.value: HumanRace,
-    RaceName.tiefling.value: TieflingRace,
-    RaceName.dragonborn.value: DragonbornRace,
+    RaceName.HUMAN.value: HumanRace,
+    RaceName.TIEFLING.value: TieflingRace,
+    RaceName.DRAGONBORN.value: DragonbornRace,
 }
 
-RaceType = [v for v in RACES.values()]
+RaceType = list(RACES.values())
