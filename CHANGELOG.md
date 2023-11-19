@@ -6,3 +6,4 @@
 * user can give a name to character
 * add more character and race attributes: size, speed, vision
 * setting character's race
+* character defences are modified when race is set

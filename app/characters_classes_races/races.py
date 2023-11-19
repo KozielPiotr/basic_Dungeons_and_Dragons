@@ -20,6 +20,12 @@ class BaseRace:
     speed = 0
     vision = None
 
+    # defences
+    armor_class = 0
+    fortitude = 0
+    reflex = 0
+    will = 0
+
 
 class HumanRace(BaseRace):
     """Humans tend toward no particular alignment. The best and the worst are found among them"""
@@ -31,9 +37,14 @@ class HumanRace(BaseRace):
     intelligence_race_bonus = 2
     wisdom_race_bonus = 2
     charisma_race_bonus = 2
+
     size = Size.MEDIUM
     speed = 6
     vision = Vision.NORMAL_VISION
+
+    fortitude = 1
+    reflex = 1
+    will = 1
 
 
 class TieflingRace(BaseRace):
