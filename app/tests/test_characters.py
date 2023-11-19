@@ -1,3 +1,4 @@
+# pylint: disable=attribute-defined-outside-init, missing-function-docstring, missing-class-docstring
 """Tests for Character class"""
 
 import pytest
@@ -5,7 +6,7 @@ import pytest
 from app.characters_classes_races.character import Character
 from app.characters_classes_races.races import RACES
 
-RACES = [race for race in RACES.values()]
+RACES = list(RACES.values())
 
 
 class TestCharacterAbilityScores:
@@ -116,7 +117,6 @@ class TestModifyCharacter:
     @pytest.mark.parametrize("race", RACES)
     def test_modify_character__abilities(self, race):
         """Character abilities are set to 0 by default"""
-
         character = self.character.modify_character(race)
         assert character.strength_race_bonus == race.strength_race_bonus
         assert character.condition_race_bonus == race.condition_race_bonus
@@ -128,7 +128,6 @@ class TestModifyCharacter:
     @pytest.mark.parametrize("race", RACES)
     def test_modify_character__secondary(self, race):
         """Checks if attributes like size are set properly"""
-
         character = self.character.modify_character(race)
         assert character.size == race.size
         assert character.speed == race.speed

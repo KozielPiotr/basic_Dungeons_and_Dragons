@@ -13,7 +13,8 @@ ignore=CVS,
 
 # Add files or directories matching the regex patterns to the blacklist. The
 # regex matches against base names, not paths.
-ignore-patterns=venv
+ignore-patterns=venv,
+                env
 
 # Python code to execute, usually for sys.path manipulation such as
 # pygtk.require().
@@ -21,7 +22,7 @@ ignore-patterns=venv
 
 # Use multiple processes to speed up Pylint. Specifying 0 will auto-detect the
 # number of processors available to use.
-jobs=1
+jobs=0
 
 # Control the amount of potential inferred values when inferring a single
 # object. This can help the performance when dealing with large functions or
@@ -285,7 +286,7 @@ name-group=
 
 # Regular expression which should only match function or class names that do
 # not require a docstring.
-no-docstring-rgx=^Meta$
+no-docstring-rgx=^Meta$, ^__init__$
 
 # List of decorators that produce properties, such as abc.abstractproperty. Add
 # to this list to register other decorators that produce valid properties.

@@ -50,14 +50,17 @@ class Character:
         self.charisma_race_bonus = 0
 
     @staticmethod
-    def count_bloodied(current_hp):
+    def count_bloodied(current_hp: int) -> int:
+        """Returns amount of HP, when character is bloodied"""
         return current_hp / 2
 
     @staticmethod
-    def count_surge_value(current_hp):
+    def count_surge_value(current_hp: int) -> int:
+        """Returns value of surge"""
         return current_hp / 4
 
     def modify_character(self, race: RaceType) -> Self:
+        """Sets character's bonuses from race"""
         self.strength_race_bonus = race.strength_race_bonus
         self.condition_race_bonus = race.condition_race_bonus
         self.dexterity_race_bonus = race.dexterity_race_bonus
@@ -71,6 +74,7 @@ class Character:
         return self
 
     def set_race(self, race):
+        """Sets character's race"""
         character = self.modify_character(race)
         character.race = race
 
@@ -100,5 +104,6 @@ class Character:
 
     @classmethod
     def create_character(cls):
+        """Creates new Character class"""
         new_character = cls()
         return new_character

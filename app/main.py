@@ -1,3 +1,4 @@
+# pylint: disable=import-error
 """Main file. Run to start program."""
 
 from triggers.triggers import Trigger
